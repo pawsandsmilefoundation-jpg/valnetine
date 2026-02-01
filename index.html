@@ -1,0 +1,48 @@
+let yesBtn = document.getElementById("yesBtn");
+let noBtn = document.getElementById("noBtn");
+let size = 1;
+
+noBtn.onclick = () => {
+  size += 0.2;
+  yesBtn.style.transform = `scale(${size})`;
+};
+
+yesBtn.onclick = () => {
+  document.getElementById("proposal").classList.add("hidden");
+  document.getElementById("valentine").classList.remove("hidden");
+};
+
+function showQuiz() {
+  document.getElementById("content").innerHTML = `
+    <h2>Relationship Quiz 💑</h2>
+    <p>Who loves more?</p>
+    <b>Answer:</b> Me 😘
+  `;
+}
+
+function showPromise() {
+  document.getElementById("content").innerHTML = `
+    <h2>My Promise 🤞</h2>
+    <p>
+      I promise to stay with you,
+      fight with you,
+      laugh with you,
+      and love you forever ❤️
+    </p>
+  `;
+}
+
+function showHeart() {
+  document.getElementById("content").innerHTML = `
+    <h2>Our Memories ❤️</h2>
+    <div class="heart">
+      <img src="photos/img1.jpg">
+      <img src="photos/img2.jpg">
+      <img src="photos/img3.jpg">
+      <img src="photos/img4.jpg">
+      <img src="photos/img3.jpg">
+      <img src="photos/img2.jpg">
+      <img src="photos/img1.jpg">
+    </div>
+  `;
+}
