@@ -61,6 +61,29 @@ button {
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   transition: transform 0.3s;
 }
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.optionBtn {
+  background: white;
+  color: #ff1c1c;
+  border: none;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.optionBtn:hover {
+  background: #ff1c1c;
+  color: white;
+  transform: scale(1.03);
+}
 
 .card:hover {
   transform: scale(1.05);
