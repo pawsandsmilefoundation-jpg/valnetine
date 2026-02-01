@@ -127,15 +127,93 @@ yesBtn.addEventListener("click", () => {
   document.getElementById("valentine").classList.remove("hidden");
 });
 
+<script>
+const quizData = [
+  {
+    q: "Who loves more? 💖",
+    options: ["You", "Me", "Both", "No one"],
+    correct: 1
+  },
+  {
+    q: "Our favorite time together? ⏰",
+    options: ["Morning", "Evening", "Night", "Always"],
+    correct: 3
+  },
+  {
+    q: "Who gets angry first? 😤",
+    options: ["You", "Me", "Both", "No one"],
+    correct: 0
+  },
+  {
+    q: "Who says sorry first? 🤭",
+    options: ["You", "Me", "Both", "Depends"],
+    correct: 1
+  },
+  {
+    q: "Our relationship is? 💑",
+    options: ["Cute", "Strong", "Forever", "All of these"],
+    correct: 3
+  }
+];
+
+let currentQ = 0;
+let score = 0;
+
 function showQuiz() {
-  document.getElementById("content").innerHTML = `
+  currentQ = 0;
+  score = 0;
+  loadQuestion();
+}
+
+function loadQuestion() {
+  let q = quizData[currentQ];
+
+  let html = `
     <h2>Relationship Quiz 💑</h2>
-    <p>Who fell in love first? 😜</p>
-    <p><b>Answer:</b> Me 😌❤️</p>
-    <p>Who is cuter?</p>
-    <p><b>Answer:</b> You 😍</p>
+    <h3>${currentQ + 1}. ${q.q}</h3>
+    <div class="options">
+  `;
+
+  q.options.forEach((opt, index) => {
+    html += `<button class="optionBtn" onclick="checkAnswer(${index})">${opt}</button>`;
+  });
+
+  html += `</div><p id="result"></p>`;
+  document.getElementById("content").innerHTML = html;
+}
+
+function checkAnswer(selected) {
+  let correct = quizData[currentQ].correct;
+  let result = document.getElementById("result");
+
+  if (selected === correct) {
+    result.innerHTML = "✅ Correct!";
+    result.style.color = "#00ff9c";
+    score++;
+  } else {
+    result.innerHTML = "❌ Wrong!";
+    result.style.color = "#ffb3b3";
+  }
+
+  setTimeout(() => {
+    currentQ++;
+    if (currentQ < quizData.length) {
+      loadQuestion();
+    } else {
+      showResult();
+    }
+  }, 1000);
+}
+
+function showResult() {
+  document.getElementById("content").innerHTML = `
+    <h2>Quiz Finished 🎉</h2>
+    <h3>Your Score: ${score} / ${quizData.length}</h3>
+    <p>${score >= 3 ? "You know us very well ❤️" : "Still cute though 😄"}</p>
   `;
 }
+</script>
+
 
 function showPromise() {
   document.getElementById("content").innerHTML = `
